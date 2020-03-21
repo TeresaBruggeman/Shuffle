@@ -65,3 +65,4 @@ $(document).ready(function () {
             $("#zodiac").append(response.horoscope);
         });
     })
+})
