@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Envelope</title>
+  </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand"><h1>Envelope</h1></a>
+      </nav>
+      <div class="container">
+          <div class="row">
+              <div class="column">
+                <form>
+                    <label for="sun-sign">Enter Your Sun Sign</label>
+                    <input id="horoscope">
+                </form>
+                <button id="send">Send</button>
+              </div>
+          </div>
+        <div class="row">
+          <div class="column" id="gif"></div>
+            <div class="column" id="horoscope">
+                <div id="zodiac"></div>
+            </div>
+            <div class="column" id="quote"></div>
+        </div>
+      </div>
+
+      <!--
     <button id="pic">PHOTO</button><br><br>
     <div id="pix">
 
@@ -28,7 +53,14 @@
     <div id="zodiac"></div>
 
     <script src="./script.js"></script>
+    -->
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
 
 </body>
 
