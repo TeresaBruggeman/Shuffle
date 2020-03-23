@@ -2,113 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <button id="pic">PHOTO</button><br><br>
-    <div id="pix">
+    <div class="container">
+        <header>
+            <div class="page-header">E N V E L O P E</div>
+        </header>
+        <div class="background">
+            <div id="header" class="row">
 
-    </div><br><br>
-    <button id="push">POEM</button>
-    <div id="lines">
-
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <button id="capricorn">
+                        <span class="iconify" data-icon="mdi:zodiac-capricorn" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="aquarius">
+                        <span class="iconify" data-icon="mdi:zodiac-aquarius" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="pisces">
+                        <span class="iconify" data-icon="mdi:zodiac-pisces" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="aries">
+                        <span class="iconify" data-icon="mdi:zodiac-aries" data-inline="false"></span>
+                    </button>
+                </div>
+                <div id="taurus" class="col-md-1">
+                    <button id="">
+                        <span class="iconify" data-icon="mdi:zodiac-taurus" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="gemini">
+                        <span class="iconify" data-icon="mdi:zodiac-gemini" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="leo">
+                        <span class="iconify" data-icon="mdi:zodiac-leo" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="cancer">
+                        <span class="iconify" data-icon="mdi:zodiac-cancer" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="virgo">
+                        <span class="iconify" data-icon="mdi:zodiac-virgo" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="libra">
+                        <span class="iconify" data-icon="mdi:zodiac-libra" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="scorpio">
+                        <span class="iconify" data-icon="mdi:zodiac-scorpio" data-inline="false"></span>
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button id="sagittarius">
+                        <span class="iconify" data-icon="mdi:zodiac-sagittarius" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="cards" class="row">
+                <div class="col-md-4">
+                    <img src="blackwhitecard.jpg" alt="playing-card">
+                </div>
+                <div class="col-md-4">
+                    <img src="blackwhitecard.jpg" alt="playing-card">
+                </div>
+                <div class="col-md-4"> 
+                    <img src="blackwhitecard.jpg" alt="playing-card">
+                </div>
+            </div>
+        </div>
     </div>
-    <button id="phrase">Snippet</button>
-    <div id="text"></div>
-    <button id="quote">Quote</button>
-    <div id="random-quote"></div>
-
-    <form>
-        <label for="sun-sign">Enter Your Sun Sign</label>
-        <input id="horoscope">
-    </form>
-    <button id="send">Send</button>
-    <div id="zodiac"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("#push").on("click", function () {
-
-            var queryURL = "http://poetrydb.org//lines/6:abs";
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-                var poem = response[1].lines[3];
-                var secondline = response[1].lines[4];
-                console.log(poem);
-                $("#lines").append(poem, secondline);
-            })
-        })
-        $("#pic").on("click", function () {
-
-            var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response)
-                var randomImage = $("<img>");
-                console.log(randomImage);
-                randomImage.attr("src", response.data.images.original_still.url);
-                $("#pix").append(randomImage);
-            });
-        })
-        $("#phrase").on("click", function () {
-
-
-            var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/"
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response)
-                var randomPhrase = response.text;
-
-
-                $("#text").append(randomPhrase);
-            });
-        })
-        $("#quote").on("click", function () {
-
-            var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-                var randomQuote = response.text;
-                $("#random-quote").append(randomQuote);
-
-            });
-
-        })
-
-        $("#send").on("click", function () {
-            var sign = $("#horoscope").val();
-
-            var queryURL = "http://horoscope-api.herokuapp.com/horoscope/today/" + sign
-            //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-                console.log(sign);
-
-                $("#zodiac").append(response.horoscope);
-
-            });
-
-        })
-
-    </script>
 </body>
 
 </html>
