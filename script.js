@@ -79,21 +79,21 @@ $(document).ready(function () {
     });
     
     //this calls to the nasa picture of the day server, returns an image or video and displays it
-    $("#buttons").on("click", function (event) {
-        $(".card-one").empty();
-        $(".")
-        var sign = event.target;
-        console.log(this.event);
-        console.log(event.target);
+    $(".zodbutton").on("click", function (event) {
+        $("#card-one").empty();
+        var sign = this.id;
         console.log(sign);
         var queryURL = "https://images-api.nasa.gov/search?description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
-            //console.log("NASA" + JSON(stringify).response);
+        }).then(function(res) {
+            console.log(res);
+            var imageUrl = res.collection.items[0].links[0].href
+            console.log(res.collection.items[0].links[0].href);
             var nasaImage = $("<img>");
-            nasaImage.attr("src", response.url);
+            nasaImage.attr("src", imageUrl);
+            nasaImage.addClass("nasa");
             $("#card-one").append(nasaImage);
         });
     });
