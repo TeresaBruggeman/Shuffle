@@ -1,3 +1,6 @@
-/* body {
-    font-size: 1000px;
-} */
+.navbar {
+    display: block;
+    text-align: center;
+    float: none;
+    vertical-align: top;
+}
