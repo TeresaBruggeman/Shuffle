@@ -77,41 +77,44 @@ $(document).ready(function () {
             $("#zodiac").append(response.horoscope);
         });
     });
-
+    
     //this calls to the nasa picture of the day server, returns an image or video and displays it
-    $("#nasaButton").on("click", function () {
-        var queryURL = "https://api.nasa.gov/planetary/apod?api_key=Qf0CKn3PbG3Sdd9uf75wORcuvuKeU5TlzPaSNZER";
+    $("#buttons").on("click", function (event) {
+        $(".card-one").empty();
+        $(".")
+        var sign = event.target;
+        console.log(this.event);
+        console.log(event.target);
+        console.log(sign);
+        var queryURL = "https://images-api.nasa.gov/search?description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             //console.log("NASA" + JSON(stringify).response);
-            var nasaImage = $("<iframe>");
-            var nasaDate = response.date;
-            console.log(response.date);
-            console.log(response.url);
+            var nasaImage = $("<img>");
             nasaImage.attr("src", response.url);
-            $("#nasa").append(nasaImage);
+            $("#card-one").append(nasaImage);
         });
     });
-
+    // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
-    $("#dictionaryButton").on("click", function () {
-        var inputWord = $("#inputWord")
-            .val()
-            .trim();
-        console.log(inputWord);
-        var queryURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/" + inputWord + "?key=f7b3abf4-fb20-401a-9854-99b48ba1805f";
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            var results = response[0];
-            console.log(response[0]);
-            var dictData = results.shortdef[0];
-            $("#dictionary").append(inputWord + " - ");
-            $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
-        });
-    });
+    // $("#dictionaryButton").on("click", function () {
+    //     var inputWord = $("#inputWord")
+    //         .val()
+    //         .trim();
+    //     console.log(inputWord);
+    //     var queryURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/" + inputWord + "?key=f7b3abf4-fb20-401a-9854-99b48ba1805f";
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var results = response[0];
+    //         console.log(response[0]);
+    //         var dictData = results.shortdef[0];
+    //         $("#dictionary").append(inputWord + " - ");
+    //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
+    //     });
+    // });
 }); //closing for document ready function
