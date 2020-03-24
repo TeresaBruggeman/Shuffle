@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
             <div id="header" class="row">
 
             </div>
-            <div class="row">
+            <div class="row" id="buttons">
                 <div class="col-md-1">
                     <button id="capricorn">
                         <span class="iconify" data-icon="mdi:zodiac-capricorn" data-inline="false"></span>
@@ -84,13 +85,40 @@
             </div>
             <div id="cards" class="row">
                 <div class="col-md-4">
-                    <img src="blackwhitecard.jpg" alt="playing-card">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
+                            </div>
+                            <div class="flip-card-back" id="card-one">
+                                <h1>Some Content</h1>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="blackwhitecard.jpg" alt="playing-card">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
+                            </div>
+                            <div class="flip-card-back" id="card-two">
+                                <h1>Some Content</h1>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4"> 
-                    <img src="blackwhitecard.jpg" alt="playing-card">
+                <div class="col-md-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
+                            </div>
+                            <div class="flip-card-back" id="card-one">
+                                <h1>Some Content</h1>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
