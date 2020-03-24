@@ -1,128 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
+    <!-- Bootstrap CSS CDN  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!-- local style sheet -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Envelope</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <header>
-            <div class="page-header">E N V E L O P E</div>
-        </header>
-        <div class="background">
-            <div id="header" class="row">
-
-            </div>
-            <div class="row" id="buttons">
-                <div class="col-md-1">
-                    <button id="capricorn">
-                        <span class="iconify" data-icon="mdi:zodiac-capricorn" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="aquarius">
-                        <span class="iconify" data-icon="mdi:zodiac-aquarius" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="pisces">
-                        <span class="iconify" data-icon="mdi:zodiac-pisces" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="aries">
-                        <span class="iconify" data-icon="mdi:zodiac-aries" data-inline="false"></span>
-                    </button>
-                </div>
-                <div id="taurus" class="col-md-1">
-                    <button id="">
-                        <span class="iconify" data-icon="mdi:zodiac-taurus" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="gemini">
-                        <span class="iconify" data-icon="mdi:zodiac-gemini" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="leo">
-                        <span class="iconify" data-icon="mdi:zodiac-leo" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="cancer">
-                        <span class="iconify" data-icon="mdi:zodiac-cancer" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="virgo">
-                        <span class="iconify" data-icon="mdi:zodiac-virgo" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="libra">
-                        <span class="iconify" data-icon="mdi:zodiac-libra" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="scorpio">
-                        <span class="iconify" data-icon="mdi:zodiac-scorpio" data-inline="false"></span>
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button id="sagittarius">
-                        <span class="iconify" data-icon="mdi:zodiac-sagittarius" data-inline="false"></span>
-                    </button>
-                </div>
-            </div>
-            <div id="cards" class="row">
-                <div class="col-md-4">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
-                            </div>
-                            <div class="flip-card-back" id="card-one">
-                                <h1>Some Content</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
-                            </div>
-                            <div class="flip-card-back" id="card-two">
-                                <h1>Some Content</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;">
-                            </div>
-                            <div class="flip-card-back" id="card-one">
-                                <h1>Some Content</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <header>
+        <div class="page-header">E N V E L O P E</div>
+      </header>
+      <div class="background">
+        <div id="header" class="row"></div>
+        <div class="row" id="buttons">
+          <div class="col-md-1">
+            <button id="capricorn">
+              <span class="iconify" data-icon="mdi:zodiac-capricorn" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="aquarius">
+              <span class="iconify" data-icon="mdi:zodiac-aquarius" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="pisces">
+              <span class="iconify" data-icon="mdi:zodiac-pisces" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="aries">
+              <span class="iconify" data-icon="mdi:zodiac-aries" data-inline="false"></span>
+            </button>
+          </div>
+          <div id="taurus" class="col-md-1">
+            <button id="">
+              <span class="iconify" data-icon="mdi:zodiac-taurus" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="gemini">
+              <span class="iconify" data-icon="mdi:zodiac-gemini" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="leo">
+              <span class="iconify" data-icon="mdi:zodiac-leo" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="cancer">
+              <span class="iconify" data-icon="mdi:zodiac-cancer" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="virgo">
+              <span class="iconify" data-icon="mdi:zodiac-virgo" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="libra">
+              <span class="iconify" data-icon="mdi:zodiac-libra" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="scorpio">
+              <span class="iconify" data-icon="mdi:zodiac-scorpio" data-inline="false"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button id="sagittarius">
+              <span class="iconify" data-icon="mdi:zodiac-sagittarius" data-inline="false"></span>
+            </button>
+          </div>
         </div>
+        <div id="cards" class="row">
+          <div class="col-md-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;" />
+                </div>
+                <div class="flip-card-back" id="card-one">
+                  <h1>Some Content</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;" />
+                </div>
+                <div class="flip-card-back" id="card-two">
+                  <h1>Some Content</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="blackwhitecard.jpg" alt="playing-card" style="height:400px;width:auto;" />
+                </div>
+                <div class="flip-card-back" id="card-one">
+                  <h1>Some Content</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
 
+    <!-- Scripts Section -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+    <!-- Retiring old code, remove later !!!!!!!!
+        
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand"><h1>Envelope</h1></a>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <form>
+            <label for="sun-sign">Enter Your Sun Sign</label>
+            <input id="horoscope" />
+          </form>
+          <button id="send">Send</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column" id="gif">
+          <button id="pic">PHOTO</button><br /><br />
+          <div id="pix"></div>
+        </div>
+        <div class="column" id="horoscope">
+          <div id="zodiac"></div>
+        </div>
+        <div class="column" id="quote">
+          <button id="phrase">Snippet</button>
+          <div id="text"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="push">POEM</button>
+    <div id="lines">
+
+    </div>
+    
+    <button id="quote">Quote</button>
+    <div id="random-quote"></div>    
+
+    <form>
+        <label for="sun-sign">Enter Your Sun Sign</label>
+        <input id="horoscope">
+    </form>
+    <button id="send">Send</button>
+    <div id="zodiac"></div>
+    
+
+    -- nasa button and div for now --
+    <button id="nasaButton">NASA</button>
+    <div id="nasa"></div>
+    -- dictionary word input form and div for now --
+    <form>
+      <label for="word">Enter a Word</label>
+      <input id="inputWord" />
+    </form>
+    <button id="dictionaryButton">Look it up!</button>
+    <div id="dictionary"></div> 
+
+    -->
+
+   
+  </body>
 </html>
