@@ -152,17 +152,18 @@ $(document).ready(function () {
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
-        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&location=space&q=space&center=msfc&keywords=nebula&title=space"
+        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&center=msfc"
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
+        console.log(queryURL)
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             //error trapping- if no items are returned, use saved image
             if (res.collection.items.length === 0) {
-                // console.log(true);
-                // console.log(res);
-                var imageUrl = "0203048_medium.jpg"
+                console.log(true);
+                console.log(res);
+                var imageUrl = "nasa-alt-imag.jpg"
                 var nasaImage = $("<img>");
                 nasaImage.attr("src", imageUrl);
                 nasaImage.css("width", "100%");
@@ -171,12 +172,13 @@ $(document).ready(function () {
             }
             //error trapping- otherwise use first image they returned
             else {
-                // console.log(false)
-                // console.log(res);
+                console.log(false)
+                console.log(res);
                 var imageUrl = res.collection.items[0].links[0].href
                 // console.log(res.collection.items[0].links[0].href);
                 var nasaImage = $("<img>");
                 nasaImage.attr("src", imageUrl);
+                nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
                 $("#card-one").append(nasaImage);
             }
