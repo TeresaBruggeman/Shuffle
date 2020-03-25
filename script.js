@@ -7,6 +7,7 @@ $(document).ready(function () {
     //         url: queryURL,
     //         method: "GET"
     //     }).then(function (response) {
+
     //         // console.log(response);
     //         var poem = response[1].lines[3];
     //         var secondline = response[1].lines[4];
@@ -99,6 +100,7 @@ $(document).ready(function () {
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
+        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&location=space&q=space&center=msfc&keywords=nebula&title=space"
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
@@ -108,9 +110,10 @@ $(document).ready(function () {
             if (res.collection.items.length === 0) {
                 console.log(true);
                 console.log(res);
-                var imageUrl = "0203048_medium.jpg"
+                var imageUrl = "./nasa-alt-imag.jpg"
                 var nasaImage = $("<img>");
                 nasaImage.attr("src", imageUrl);
+                nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
                 $("#card-one").append(nasaImage);
             }
@@ -122,6 +125,7 @@ $(document).ready(function () {
             // console.log(res.collection.items[0].links[0].href);
             var nasaImage = $("<img>");
             nasaImage.attr("src", imageUrl);
+            nasaImage.css("width", "100%");
             nasaImage.addClass("nasa");
             $("#card-one").append(nasaImage);
         }
