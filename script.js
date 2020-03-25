@@ -115,7 +115,7 @@ $(document).ready(function () {
                 nasaImage.attr("src", imageUrl);
                 nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
-                $("#card-one").append(nasaImage);
+                $("#card-one").append(nasaImage);  
             }
             //error trapping- otherwise use first image they returned
             else {
