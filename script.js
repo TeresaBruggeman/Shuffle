@@ -1,4 +1,4 @@
-// added so script.js waits for JQuery call
+
 $(document).ready(function () {
     // $("#push").on("click", function () {
     //     var queryURL = "https://poetrydb.org//lines/6:abs";
@@ -19,7 +19,7 @@ $(document).ready(function () {
     $(".zodbutton").on("click", function () {
         $("#card-three").empty();
         var zodiacSign = this.id;
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + zodiacSign + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + zodiacSign + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
         // console.log(zodiacSign)
 
         // https://api.giphy.com/v1/gifs/random?api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg
@@ -127,4 +127,5 @@ $(document).ready(function () {
     //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
     //     });
     // });
-}); //closing for document ready function
+
+}); 
