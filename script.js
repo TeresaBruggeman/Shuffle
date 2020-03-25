@@ -1,35 +1,35 @@
 // added so script.js waits for JQuery call
 $(document).ready(function () {
-    $("#push").on("click", function () {
-        var queryURL = "https://poetrydb.org//lines/6:abs";
+    // $("#push").on("click", function () {
+    //     var queryURL = "https://poetrydb.org//lines/6:abs";
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            var poem = response[1].lines[3];
-            var secondline = response[1].lines[4];
-            console.log(poem);
-            $("#lines").append(poem, secondline);
-        });
-    });
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var poem = response[1].lines[3];
+    //         var secondline = response[1].lines[4];
+    //         console.log(poem);
+    //         $("#lines").append(poem, secondline);
+    //     });
+    // });
 
-    //GIPHY API
-    $("#pic").on("click", function () {
-        var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
+    // //GIPHY API
+    // $("#pic").on("click", function () {
+    //     var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            var randomImage = $("<img>");
-            console.log(randomImage);
-            randomImage.attr("src", response.data.images.original_still.url);
-            $("#pix").append(randomImage);
-        });
-    });
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var randomImage = $("<img>");
+    //         console.log(randomImage);
+    //         randomImage.attr("src", response.data.images.original_still.url);
+    //         $("#pix").append(randomImage);
+    //     });
+    // });
 
     //Random Phrase API
     $("#phrase").on("click", function () {
@@ -60,23 +60,23 @@ $(document).ready(function () {
         });
     });
 
-    //Horoscope API
-    $("#send").on("click", function () {
-        var sign = $("#horoscope").val();
-        console.log(sign);
+    // //Horoscope API
+    // $("#send").on("click", function () {
+    //     var sign = $("#horoscope").val();
+    //     console.log(sign);
 
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
-        //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            console.log(sign);
+    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
+    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         console.log(sign);
 
-            $("#zodiac").append(response.horoscope);
-        });
-    });
+    //         $("#zodiac").append(response.horoscope);
+    //     });
+    // });
     
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
@@ -89,6 +89,7 @@ $(document).ready(function () {
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
+        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&location=space&q=space&center=msfc&keywords=nebula&title=space"
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
@@ -98,9 +99,10 @@ $(document).ready(function () {
             if (res.collection.items.length === 0) {
                 console.log(true);
                 console.log(res);
-                var imageUrl = "0203048_medium.jpg"
+                var imageUrl = "./nasa-alt-imag.jpg"
                 var nasaImage = $("<img>");
                 nasaImage.attr("src", imageUrl);
+                nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
                 $("#card-one").append(nasaImage);
             }
@@ -112,6 +114,7 @@ $(document).ready(function () {
             console.log(res.collection.items[0].links[0].href);
             var nasaImage = $("<img>");
             nasaImage.attr("src", imageUrl);
+            nasaImage.css("width", "100%");
             nasaImage.addClass("nasa");
             $("#card-one").append(nasaImage);
         }
