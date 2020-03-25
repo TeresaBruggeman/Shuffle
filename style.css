@@ -13,9 +13,9 @@
 }
 .background {
     background-image: url('https://cdn10.bigcommerce.com/s-nooeb3z/products/938/images/23332/8410_B1__44017.1454354946.1280.1280.jpg?c=2');
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     width: 100%;
-    height: 530px;
+    height: auto;
     display: inline-block;
     border: black solid 3px;
     object-fit: cover;
@@ -60,7 +60,7 @@
     width: auto;
     height: 400px;
     perspective: 1000px;
-   
+    
   }
   .flip-card-inner {
     position: relative;
@@ -81,9 +81,11 @@
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
     border-radius: 20px;
+    
   }
   .flip-card-back {
     background-color: rgb(251, 18, 1);
     color: white;
     transform: rotateY(180deg);
+    
   }
