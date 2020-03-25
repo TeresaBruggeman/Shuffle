@@ -90,23 +90,45 @@ $(document).ready(function () {
 
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
-        $("#card-one").empty();
+        $("#card-one").empty();        
         var sign = this.id;
-        // console.log(sign);
-        var queryURL = "https://images-api.nasa.gov/search?description=" + sign + "&media_type=image"
+        console.log(sign);
+        // no images in database for scorpio so use it's planets instead
+        if (sign == "scorpio") {
+            scorpio = ["pluto", "mars"]
+            var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
+            console.log(sign);
+        }
+        var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (res) {
-            // console.log(res);
+        }).then(function(res) {
+            //error trapping- if no items are returned, use saved image
+            if (res.collection.items.length === 0) {
+                console.log(true);
+                console.log(res);
+                var imageUrl = "0203048_medium.jpg"
+                var nasaImage = $("<img>");
+                nasaImage.attr("src", imageUrl);
+                nasaImage.addClass("nasa");
+                $("#card-one").append(nasaImage);
+            }
+            //error trapping- otherwise use first image they returned
+            else {
+            console.log(false)
+            console.log(res);
             var imageUrl = res.collection.items[0].links[0].href
             // console.log(res.collection.items[0].links[0].href);
             var nasaImage = $("<img>");
             nasaImage.attr("src", imageUrl);
             nasaImage.addClass("nasa");
             $("#card-one").append(nasaImage);
+        }
         });
     });
+   
+   
     // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
     // $("#dictionaryButton").on("click", function () {
