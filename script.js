@@ -1,4 +1,4 @@
-// added so script.js waits for JQuery call
+
 $(document).ready(function () {
     // $("#push").on("click", function () {
     //     var queryURL = "https://poetrydb.org//lines/6:abs";
@@ -7,6 +7,7 @@ $(document).ready(function () {
     //         url: queryURL,
     //         method: "GET"
     //     }).then(function (response) {
+
     //         // console.log(response);
     //         var poem = response[1].lines[3];
     //         var secondline = response[1].lines[4];
@@ -151,6 +152,7 @@ $(document).ready(function () {
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
+        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&location=space&q=space&center=msfc&keywords=nebula&title=space"
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         $.ajax({
             url: queryURL,
@@ -163,6 +165,7 @@ $(document).ready(function () {
                 var imageUrl = "0203048_medium.jpg"
                 var nasaImage = $("<img>");
                 nasaImage.attr("src", imageUrl);
+                nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
                 $("#card-one").append(nasaImage);
             }
@@ -201,4 +204,5 @@ $(document).ready(function () {
     //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
     //     });
     // });
-}); //closing for document ready function
+
+}); 
