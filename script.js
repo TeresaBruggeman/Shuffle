@@ -1,5 +1,11 @@
-
 $(document).ready(function () {
+    // Global Vars
+
+    // imgflip.com meme IDs for meme card
+    var imgFlipZodaicIDs = {
+        taurus:["172511443","137057825"]
+    }
+
     // $("#push").on("click", function () {
     //     var queryURL = "https://poetrydb.org//lines/6:abs";
 
@@ -43,19 +49,34 @@ $(document).ready(function () {
     });
 
     // Random Phrase API
-    $(".zodbutton").on("click", function () {
-        var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
+    // $(".zodbutton").on("click", function () {
+    //     var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
 
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var randomPhrase = response.text;
+    //         $("#card-two").empty();
+    //         $("#card-two").append(randomPhrase);
+    //     });
+    // });
+
+    $(".zodbutton").on("click", function () {
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: "POST",
+            data:"template_id=" + imgFlipZodaicIDs[$(this).attr('id')][Math.random] + "&username=npgockel&password=D6q*Ae-dqntnfkt&text0=Gemini"
         }).then(function (response) {
             console.log(response);
-            var randomPhrase = response.text;
+            var pic = $("<img>").attr("src",response.data.url);
+            $("#card-two").empty();
+            $("#card-two").append(pic);
+        })
+    })
 
-            $("#card-two").append(randomPhrase);
-        });
-    });
 
     //Random Quote API
     // $("#quote").on("click", function () {
