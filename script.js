@@ -73,7 +73,7 @@ $(document).ready(function () {
     function renderZodiac(searchWord) {
         $("#card-three").empty();
         // var zodiacSign = this.id;
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
         // console.log(zodiacSign)
 
         $.ajax({
