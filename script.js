@@ -167,14 +167,14 @@ $(document).ready(function () {
     $(".zodbutton").on("click", function (event) {
         $("#card-one").empty();
         var sign = this.id;
-        // console.log(sign);
+        
         // no images in database for scorpio so use it's planets instead
         if (sign == "scorpio") {
             scorpio = ["pluto", "mars"]
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
-        //var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image&center=msfc"
+        
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         console.log(queryURL)
         $.ajax({
@@ -186,28 +186,34 @@ $(document).ready(function () {
                 console.log(true);
                 console.log(res);
                 var imageUrl = "nasa-alt-imag.jpg"
-                var nasaImage = $("<img>");
-                nasaImage.attr("src", imageUrl);
-                nasaImage.css("width", "100%");
-                nasaImage.addClass("nasa");
-                $("#card-one").append(nasaImage);  
+                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%"});                
+                var wordDisplay = $("<h3>").text(searchTitle).css({"position": "absolute", "bottom": "3px", "padding": "0 5%"});
+                var blurbText ="Image courtesy of NASA Image and Video Library"
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({"display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit"}).appendTo(wordDisplay);
+                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit"}).append(nasaImage, wordDisplay);
+                $("#card-one").append(nasaDiv);
             }
             //error trapping- otherwise use first image they returned
             else {
-                console.log(false)
+                console.log(false);
                 console.log(res);
-                var imageUrl = res.collection.items[0].links[0].href
-                // console.log(res.collection.items[0].links[0].href);
-                var nasaImage = $("<img>");
-                nasaImage.attr("src", imageUrl);
-                nasaImage.css("width", "100%");
-                nasaImage.addClass("nasa");
-                $("#card-one").append(nasaImage);
-            }
+                if (res.collection.metadata.total_hits < 100) {
+                    var arrNum = [Math.floor(Math.random() * res.collection.metadata.total_hits)];
+                }
+                else {
+                    var arrNum = [Math.floor(Math.random() * 100)];
+                }
+                var imageUrl = res.collection.items[arrNum].links[0].href;                
+                var searchTitle = res.collection.items[arrNum].data[0].title;                
+                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%"});
+                var wordDisplay = $("<h3>").text(searchTitle).css({"position": "absolute", "bottom": "3px", "padding": "0 5%"});
+                var blurbText ="Image courtesy of NASA Image and Video Library"
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({"display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit"}).appendTo(wordDisplay);
+                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit"}).append(nasaImage, wordDisplay);
+                $("#card-one").append(nasaDiv);                                  
+            };
         });
     });
-
-
     // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
     // $("#dictionaryButton").on("click", function () {
