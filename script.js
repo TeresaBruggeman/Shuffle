@@ -1,27 +1,24 @@
 $(document).ready(function () {
-    // Global Vars
+// Global Vars
 
-    // imgflip.com meme IDs for meme card
+    // imgflip meme ID Object
     var imgFlipZodaicIDs = {
-        taurus:["172511443","137057825"]
+        taurus:["172511443","137057825","28000573","179631944","41083216"],
+        aries:["8349350","19602839","215994578","75214965","120854739"],
+        leo:["5496396","86037","4685281","11705221", "17642278" ],
+        pisces:["111729424","150370859","219156202","83413494","19030307"],
+        libra:["152851849","94647445","146210232","167296642","81230624"],
+        sagittarius:["100944","40347832","28321910","78729922","67900687"],
+        virgo:["58771928","106285530","147102980","45608887","201158633"],
+        capricorn:["193629024","30205003","39479736","220132156","19827973"],
+        cancer:["150982856","29497357","182088735","63796042","2124726"],
+        aquarius:["41517375","7215045","39250905","116559912","225058219"],
+        scorpio:["7924237","212319446","37010978","196659352","165367496"],
+        gemini:["117402","39048906","96149579","27090065","98679591"]
+
     }
 
-    // $("#push").on("click", function () {
-    //     var queryURL = "https://poetrydb.org//lines/6:abs";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-
-    //         // console.log(response);
-    //         var poem = response[1].lines[3];
-    //         var secondline = response[1].lines[4];
-    //         // console.log(poem);
-    //         $("#lines").append(poem, secondline);
-    //     });
-    // });
-
+    // Giphy Zodiac Attribute Array
     $(".zodbutton").on("click", function () {
         var zodiacValue = this.id;
         if (zodiacValue === "leo") {
@@ -76,6 +73,9 @@ $(document).ready(function () {
         renderZodiac(searchWord)
     });
 
+// Functions
+
+    // Giphy Call Function
     function renderZodiac(searchWord) {
         $("#card-three").empty();
         // var zodiacSign = this.id;
@@ -100,68 +100,43 @@ $(document).ready(function () {
         });
     }
 
-    // Random Phrase API
+    // Random Phrase API integration with imgFlipAPI
     $(".zodbutton").on("click", function () {
         var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
-
+        var zodsign = $(this).attr("id")
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
+            console.log("random Quote", response);
+            var splitText = response.text.split(".");
+            console.log(splitText);
             var randomPhrase = response.text;
+            imgFlipAPI(splitText[0],splitText[1],zodsign);
             $("#card-two").empty();
-            $("#card-two").append(randomPhrase);
         });
     });
 
-    // $(".zodbutton").on("click", function () {
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "POST",
-    //         data:"template_id=137057825" + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=Gemini"
-    //         // imgFlipZodaicIDs[$(this).attr('id')][Math.random]
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var pic = $("<img>").attr("src",response.data.url);
-    //         $("#card-two").empty();
-    //         $("#card-two").append(pic);
-    //     })
-    // })
+    // imgFlipAPI: Calls Meme creation functionality
+    function imgFlipAPI(text0,text1,zodsign){
+        console.log("zodsign", $(this).attr("id"));
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
+        var randomTemplateID = imgFlipZodaicIDs[zodsign][Math.floor(Math.random() * imgFlipZodaicIDs[zodsign].length)];
+        console.log("Random Template", randomTemplateID);
+        $.ajax({
+            url: queryURL,
+            method: "POST",
+            data:"template_id="+ randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
+        }).then(function (response) {
+            console.log("Random Image", response);
+            var pic = $("<img>").attr("src",response.data.url);
+            $("#card-two").empty();
+            $("#card-two").append(pic);
+        })
+    }
 
 
-    //Random Quote API
-    // $("#quote").on("click", function () {
-    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomQuote = response.text;
-    //         $("#random-quote").append(randomQuote);
-    //     });
-    // });
-
-    //Horoscope API
-    // $("#send").on("click", function () {
-    //     var sign = $("#horoscope").val();
-    //     console.log(sign);
-
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
-    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         console.log(sign);
-
-    //         $("#zodiac").append(response.horoscope);
-    //     });
-    // });
+    
 
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
@@ -214,6 +189,11 @@ $(document).ready(function () {
             };
         });
     });
+
+
+// Retired Code
+// DELETE BEFORE FINAL DEPLOYMENT
+
     // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
     // $("#dictionaryButton").on("click", function () {
@@ -232,6 +212,54 @@ $(document).ready(function () {
     //         var dictData = results.shortdef[0];
     //         $("#dictionary").append(inputWord + " - ");
     //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
+    //     });
+    // });
+
+        // $("#push").on("click", function () {
+    //     var queryURL = "https://poetrydb.org//lines/6:abs";
+
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+
+    //         // console.log(response);
+    //         var poem = response[1].lines[3];
+    //         var secondline = response[1].lines[4];
+    //         // console.log(poem);
+    //         $("#lines").append(poem, secondline);
+    //     });
+    // });
+
+    //Random Quote API
+    // $("#quote").on("click", function () {
+    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
+
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var randomQuote = response.text;
+    //         $("#random-quote").append(randomQuote);
+    //     });
+    // });
+
+    //Horoscope API
+    // $("#send").on("click", function () {
+    //     var sign = $("#horoscope").val();
+    //     console.log(sign);
+
+    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
+    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         console.log(sign);
+
+    //         $("#zodiac").append(response.horoscope);
     //     });
     // });
 
