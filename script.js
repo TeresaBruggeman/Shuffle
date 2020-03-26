@@ -214,8 +214,6 @@ $(document).ready(function () {
             };
         });
     });
-
-
     // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
     // $("#dictionaryButton").on("click", function () {
