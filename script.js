@@ -6,22 +6,6 @@ $(document).ready(function () {
         taurus:["172511443","137057825"]
     }
 
-    // $("#push").on("click", function () {
-    //     var queryURL = "https://poetrydb.org//lines/6:abs";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-
-    //         // console.log(response);
-    //         var poem = response[1].lines[3];
-    //         var secondline = response[1].lines[4];
-    //         // console.log(poem);
-    //         $("#lines").append(poem, secondline);
-    //     });
-    // });
-
     $(".zodbutton").on("click", function () {
         var zodiacValue = this.id;
         if (zodiacValue === "leo") {
@@ -113,55 +97,7 @@ $(document).ready(function () {
             $("#card-two").empty();
             $("#card-two").append(randomPhrase);
         });
-    });
-
-    // $(".zodbutton").on("click", function () {
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "POST",
-    //         data:"template_id=137057825" + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=Gemini"
-    //         // imgFlipZodaicIDs[$(this).attr('id')][Math.random]
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var pic = $("<img>").attr("src",response.data.url);
-    //         $("#card-two").empty();
-    //         $("#card-two").append(pic);
-    //     })
-    // })
-
-
-    //Random Quote API
-    // $("#quote").on("click", function () {
-    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomQuote = response.text;
-    //         $("#random-quote").append(randomQuote);
-    //     });
-    // });
-
-    //Horoscope API
-    // $("#send").on("click", function () {
-    //     var sign = $("#horoscope").val();
-    //     console.log(sign);
-
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
-    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         console.log(sign);
-
-    //         $("#zodiac").append(response.horoscope);
-    //     });
-    // });
+    });    
 
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
@@ -214,27 +150,5 @@ $(document).ready(function () {
             };
         });
     });
-
-
-    // don't think we are using this after all
-    // for now, this looks up a user entered word but will be updated to longest word from horiscope
-    // $("#dictionaryButton").on("click", function () {
-    //     var inputWord = $("#inputWord")
-    //         .val()
-    //         .trim();
-    //     console.log(inputWord);
-    //     var queryURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/" + inputWord + "?key=f7b3abf4-fb20-401a-9854-99b48ba1805f";
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var results = response[0];
-    //         console.log(response[0]);
-    //         var dictData = results.shortdef[0];
-    //         $("#dictionary").append(inputWord + " - ");
-    //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
-    //     });
-    // });
 
 }); 
