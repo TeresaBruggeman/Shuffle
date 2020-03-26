@@ -11,7 +11,6 @@
     border-top-right-radius: 25px;
     letter-spacing: 10px;
     text-align: center;
-    
 }
 .background {
     background-image: url('https://cdn10.bigcommerce.com/s-nooeb3z/products/938/images/23332/8410_B1__44017.1454354946.1280.1280.jpg?c=2');
@@ -22,8 +21,6 @@
     object-fit: cover;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
-  
-    
 }
 .container-fluid {
     text-align: center;
@@ -37,7 +34,6 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  /* margin: 4px 2px; */
   border-radius: 50%;
   height: 60px;
   width: 60px;
@@ -58,7 +54,6 @@ img {
 #cards {
     margin-top: 40px;
     margin-bottom: 40px;
-
 }
 .col {
   text-align: center;
@@ -69,9 +64,7 @@ img {
   height: 400px;
   perspective: 1000px;
   display: inline-block;    
-  
 }
-
 .flip-card-inner {
   position: absolute;
   width: 286px;;
@@ -79,7 +72,6 @@ img {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  /* padding: 5% 0;  */
 }
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
@@ -93,16 +85,13 @@ img {
   backface-visibility: hidden;
   border-radius: 20px;
   text-align: center;
-  
 }
 .flip-card-back {
   background-color: rgb(34, 33, 33);
   color: white;
   transform: rotateY(180deg);
   text-align: center;
-  
 }
-
 #card-one {
   overflow: hidden;
   padding-top: 25%;
@@ -111,7 +100,6 @@ img {
 .zodbutton {
   text-align: center;
 }
-
 .hover-wrap:hover #show-cap {
   display: block;
 }
@@ -122,7 +110,6 @@ img {
   color: black;
   background-color: gray;
   border: black solid 1px;
-
 }
 .hover-wrap:hover #show-aqua {
   display: block;
@@ -184,7 +171,6 @@ img {
   background-color: gray;
   border: black solid 1px;
 }
-
 .hover-wrap:hover #show-virgo {
   display: block;
 }
