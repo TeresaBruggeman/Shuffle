@@ -3,25 +3,11 @@ $(document).ready(function () {
 
     // imgflip.com meme IDs for meme card
     var imgFlipZodaicIDs = {
-        taurus:["172511443","137057825"]
+        taurus:["172511443","137057825"],
+        aries:["8349350","19602839"]
     }
 
-    // $("#push").on("click", function () {
-    //     var queryURL = "https://poetrydb.org//lines/6:abs";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-
-    //         // console.log(response);
-    //         var poem = response[1].lines[3];
-    //         var secondline = response[1].lines[4];
-    //         // console.log(poem);
-    //         $("#lines").append(poem, secondline);
-    //     });
-    // });
-
+    // Giphy Array
     $(".zodbutton").on("click", function () {
         var zodiacValue = this.id;
         if (zodiacValue === "leo") {
@@ -76,6 +62,7 @@ $(document).ready(function () {
         renderZodiac(searchWord)
     });
 
+    // Giphy Call
     function renderZodiac(searchWord) {
         $("#card-three").empty();
         // var zodiacSign = this.id;
@@ -103,80 +90,40 @@ $(document).ready(function () {
     // Random Phrase API
     $(".zodbutton").on("click", function () {
         var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
-
+        var zodsign = $(this).attr("id")
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
+            console.log("random Quote", response);
+            var splitText = response.text.split(".");
+            console.log(splitText);
             var randomPhrase = response.text;
+            imgFlipAPI(splitText[0],splitText[1],zodsign);
             $("#card-two").empty();
             $("#card-two").append(randomPhrase);
         });
     });
 
-    // $(".zodbutton").on("click", function () {
-    //     var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomPhrase = response.text;
-    //         $("#card-two").empty();
-    //         $("#card-two").append(randomPhrase);
-    //     });
-    // });
-
-
-    $(".zodbutton").on("click", function () {
+    function imgFlipAPI(text0,text1,zodsign){
+        console.log("zodsign", $(this).attr("id"));
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
+        var randomTemplateID = imgFlipZodaicIDs[zodsign][Math.floor(Math.random() * imgFlipZodaicIDs[zodsign].length)];
+        console.log("Random Template", randomTemplateID);
         $.ajax({
             url: queryURL,
             method: "POST",
-            data:"template_id=137057825" + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=Gemini"
-            // imgFlipZodaicIDs[$(this).attr('id')][Math.random]
+            data:"template_id="+ randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
         }).then(function (response) {
             console.log("Random Image", response);
             var pic = $("<img>").attr("src",response.data.url);
             $("#card-two").empty();
             $("#card-two").append(pic);
         })
-    })
+    }
 
 
-    //Random Quote API
-    // $("#quote").on("click", function () {
-    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomQuote = response.text;
-    //         $("#random-quote").append(randomQuote);
-    //     });
-    // });
-
-    //Horoscope API
-    // $("#send").on("click", function () {
-    //     var sign = $("#horoscope").val();
-    //     console.log(sign);
-
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
-    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         console.log(sign);
-
-    //         $("#zodiac").append(response.horoscope);
-    //     });
-    // });
+    
 
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
@@ -241,6 +188,54 @@ $(document).ready(function () {
     //         var dictData = results.shortdef[0];
     //         $("#dictionary").append(inputWord + " - ");
     //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
+    //     });
+    // });
+
+        // $("#push").on("click", function () {
+    //     var queryURL = "https://poetrydb.org//lines/6:abs";
+
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+
+    //         // console.log(response);
+    //         var poem = response[1].lines[3];
+    //         var secondline = response[1].lines[4];
+    //         // console.log(poem);
+    //         $("#lines").append(poem, secondline);
+    //     });
+    // });
+
+    //Random Quote API
+    // $("#quote").on("click", function () {
+    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
+
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var randomQuote = response.text;
+    //         $("#random-quote").append(randomQuote);
+    //     });
+    // });
+
+    //Horoscope API
+    // $("#send").on("click", function () {
+    //     var sign = $("#horoscope").val();
+    //     console.log(sign);
+
+    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
+    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         console.log(sign);
+
+    //         $("#zodiac").append(response.horoscope);
     //     });
     // });
 
