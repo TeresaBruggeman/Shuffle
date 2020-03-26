@@ -94,7 +94,7 @@ $(document).ready(function () {
             // console.log(gipfyArray)
             var randomGiphy = gipfyArray[Math.floor(Math.random() * gipfyArray.length)];
             var wordDisplay = $("<h1>").text(searchWord);
-            var randomImage = $("<img>").attr("src", randomGiphy.images.fixed_width_downsampled.url).attr("style", "margin-top:50px");
+            var randomImage = $("<img>").attr("src", randomGiphy.images.fixed_width_downsampled.url).css({ "width": "100%", "max-height": "100%" });
             // console.log(randomImage);
             $("#card-three").append(wordDisplay, randomImage);
         });
@@ -108,9 +108,9 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log("random Quote", response);
+            // console.log("random Quote", response);
             var splitText = response.text.split(".");
-            console.log(splitText);
+            // console.log(splitText);
             var randomPhrase = response.text;
             imgFlipAPI(splitText[0], splitText[1], zodsign);
             $("#card-two").empty();
