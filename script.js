@@ -1,5 +1,11 @@
-
 $(document).ready(function () {
+    // Global Vars
+
+    // imgflip.com meme IDs for meme card
+    var imgFlipZodaicIDs = {
+        taurus:["172511443","137057825"]
+    }
+
     // $("#push").on("click", function () {
     //     var queryURL = "https://poetrydb.org//lines/6:abs";
 
@@ -104,10 +110,26 @@ $(document).ready(function () {
         }).then(function (response) {
             // console.log(response);
             var randomPhrase = response.text;
-
+            $("#card-two").empty();
             $("#card-two").append(randomPhrase);
         });
     });
+
+    // $(".zodbutton").on("click", function () {
+    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "POST",
+    //         data:"template_id=137057825" + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=Gemini"
+    //         // imgFlipZodaicIDs[$(this).attr('id')][Math.random]
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var pic = $("<img>").attr("src",response.data.url);
+    //         $("#card-two").empty();
+    //         $("#card-two").append(pic);
+    //     })
+    // })
+
 
     //Random Quote API
     // $("#quote").on("click", function () {
