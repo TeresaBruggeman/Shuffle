@@ -49,33 +49,34 @@ $(document).ready(function () {
     });
 
     // Random Phrase API
-    // $(".zodbutton").on("click", function () {
-    //     var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomPhrase = response.text;
-    //         $("#card-two").empty();
-    //         $("#card-two").append(randomPhrase);
-    //     });
-    // });
-
     $(".zodbutton").on("click", function () {
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
+        var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
+
         $.ajax({
             url: queryURL,
-            method: "POST",
-            data:"template_id=" + imgFlipZodaicIDs[$(this).attr('id')][Math.random] + "&username=npgockel&password=D6q*Ae-dqntnfkt&text0=Gemini"
+            method: "GET"
         }).then(function (response) {
             console.log(response);
-            var pic = $("<img>").attr("src",response.data.url);
+            var randomPhrase = response.text;
             $("#card-two").empty();
-            $("#card-two").append(pic);
-        })
-    })
+            $("#card-two").append(randomPhrase);
+        });
+    });
+
+    // $(".zodbutton").on("click", function () {
+    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "POST",
+    //         data:"template_id=137057825" + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=Gemini"
+    //         // imgFlipZodaicIDs[$(this).attr('id')][Math.random]
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var pic = $("<img>").attr("src",response.data.url);
+    //         $("#card-two").empty();
+    //         $("#card-two").append(pic);
+    //     })
+    // })
 
 
     //Random Quote API
