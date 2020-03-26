@@ -129,9 +129,10 @@ $(document).ready(function () {
             data:"template_id="+ randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
         }).then(function (response) {
             console.log("Random Image", response);
-            var pic = $("<img>").attr("src",response.data.url);
+            var pic = $("<img>").attr("src",response.data.url).css({"width": "100%", "max-height": "100%"});
+            var memeDiv = $("<div>").attr("id", "memeDiv").css({"height": "inherit", "display": "flex", "justify-content": "center", "align-items": "center"}).append(pic);
             $("#card-two").empty();
-            $("#card-two").append(pic);
+            $("#card-two").append(memeDiv);
         })
     }
 
