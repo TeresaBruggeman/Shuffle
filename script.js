@@ -69,7 +69,7 @@ $(document).ready(function () {
             var gemini = ["gemini", "Twins", "quick - witted", "clever", "intellectual", "expressive", "communicative"]
             var searchWord = gemini[Math.floor(Math.random() * gemini.length)]
         }
-        console.log(searchWord)
+        // console.log(searchWord)
         renderZodiac(searchWord)
     });
 
@@ -119,16 +119,16 @@ $(document).ready(function () {
 
     // imgFlipAPI: Calls Meme creation functionality
     function imgFlipAPI(text0, text1, zodsign) {
-        console.log("zodsign", $(this).attr("id"));
+        // console.log("zodsign", $(this).attr("id"));
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
         var randomTemplateID = imgFlipZodaicIDs[zodsign][Math.floor(Math.random() * imgFlipZodaicIDs[zodsign].length)];
-        console.log("Random Template", randomTemplateID);
+        // console.log("Random Template", randomTemplateID);
         $.ajax({
             url: queryURL,
             method: "POST",
             data: "template_id=" + randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
         }).then(function (response) {
-            console.log("Random Image", response);
+            // console.log("Random Image", response);
             var pic = $("<img>").attr("src", response.data.url).css({ "width": "100%", "max-height": "100%" });
             var memeDiv = $("<div>").attr("id", "memeDiv").css({ "height": "inherit", "display": "flex", "justify-content": "center", "align-items": "center" }).append(pic);
             $("#card-two").empty();
@@ -148,19 +148,19 @@ $(document).ready(function () {
         if (sign == "scorpio") {
             scorpio = ["pluto", "mars"]
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
-            console.log(sign);
+            // console.log(sign);
         }
 
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
-        console.log(queryURL)
+        // console.log(queryURL)
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             //error trapping- if no items are returned, use saved image
             if (res.collection.items.length === 0) {
-                console.log(true);
-                console.log(res);
+                // console.log(true);
+                // console.log(res);
                 var imageUrl = "nasa-alt-imag.jpg"
                 var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" });
                 var wordDisplay = $("<h3>").text(searchTitle).css({ "position": "absolute", "bottom": "3px", "padding": "0 5%" });
@@ -171,8 +171,8 @@ $(document).ready(function () {
             }
             //error trapping- otherwise use first image they returned
             else {
-                console.log(false);
-                console.log(res);
+                // console.log(false);
+                // console.log(res);
                 if (res.collection.metadata.total_hits < 100) {
                     var arrNum = [Math.floor(Math.random() * res.collection.metadata.total_hits)];
                 }
