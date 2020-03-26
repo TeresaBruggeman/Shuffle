@@ -1,13 +1,24 @@
 $(document).ready(function () {
-    // Global Vars
+// Global Vars
 
-    // imgflip.com meme IDs for meme card
+    // imgflip meme ID Object
     var imgFlipZodaicIDs = {
-        taurus:["172511443","137057825"],
-        aries:["8349350","19602839"]
+        taurus:["172511443","137057825","28000573","179631944","41083216"],
+        aries:["8349350","19602839","215994578","75214965","120854739"],
+        leo:["5496396","86037","4685281","11705221", "17642278" ],
+        pisces:["111729424","150370859","219156202","83413494","19030307"],
+        libra:["152851849","94647445","146210232","167296642","81230624"],
+        sagittarius:["100944","40347832","28321910","78729922","67900687"],
+        virgo:["58771928","106285530","147102980","45608887","201158633"],
+        capricorn:["193629024","30205003","39479736","220132156","19827973"],
+        cancer:["150982856","29497357","182088735","63796042","2124726"],
+        aquarius:["41517375","7215045","39250905","116559912","225058219"],
+        scorpio:["7924237","212319446","37010978","196659352","165367496"],
+        gemini:["117402","39048906","96149579","27090065","98679591"]
+
     }
 
-    // Giphy Array
+    // Giphy Zodiac Attribute Array
     $(".zodbutton").on("click", function () {
         var zodiacValue = this.id;
         if (zodiacValue === "leo") {
@@ -62,7 +73,9 @@ $(document).ready(function () {
         renderZodiac(searchWord)
     });
 
-    // Giphy Call
+// Functions
+
+    // Giphy Call Function
     function renderZodiac(searchWord) {
         $("#card-three").empty();
         // var zodiacSign = this.id;
@@ -87,7 +100,7 @@ $(document).ready(function () {
         });
     }
 
-    // Random Phrase API
+    // Random Phrase API integration with imgFlipAPI
     $(".zodbutton").on("click", function () {
         var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
         var zodsign = $(this).attr("id")
@@ -101,10 +114,10 @@ $(document).ready(function () {
             var randomPhrase = response.text;
             imgFlipAPI(splitText[0],splitText[1],zodsign);
             $("#card-two").empty();
-            $("#card-two").append(randomPhrase);
         });
     });
 
+    // imgFlipAPI: Calls Meme creation functionality
     function imgFlipAPI(text0,text1,zodsign){
         console.log("zodsign", $(this).attr("id"));
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
@@ -169,6 +182,9 @@ $(document).ready(function () {
         });
     });
 
+
+// Retired Code
+// DELETE BEFORE FINAL DEPLOYMENT
 
     // don't think we are using this after all
     // for now, this looks up a user entered word but will be updated to longest word from horiscope
