@@ -1,20 +1,20 @@
 $(document).ready(function () {
-// Global Vars
+    // Global Vars
 
     // imgflip meme ID Object
     var imgFlipZodaicIDs = {
-        taurus:["172511443","137057825","28000573","179631944","41083216"],
-        aries:["8349350","19602839","215994578","75214965","120854739"],
-        leo:["5496396","86037","4685281","11705221", "17642278" ],
-        pisces:["111729424","150370859","219156202","83413494","19030307"],
-        libra:["152851849","94647445","146210232","167296642","81230624"],
-        sagittarius:["100944","40347832","28321910","78729922","67900687"],
-        virgo:["58771928","106285530","147102980","45608887","201158633"],
-        capricorn:["193629024","30205003","39479736","220132156","19827973"],
-        cancer:["150982856","29497357","182088735","63796042","2124726"],
-        aquarius:["41517375","7215045","39250905","116559912","225058219"],
-        scorpio:["7924237","212319446","37010978","196659352","165367496"],
-        gemini:["117402","39048906","96149579","27090065","98679591"]
+        taurus: ["172511443", "137057825", "28000573", "179631944", "41083216"],
+        aries: ["8349350", "19602839", "215994578", "75214965", "120854739"],
+        leo: ["5496396", "86037", "4685281", "11705221", "17642278"],
+        pisces: ["111729424", "150370859", "219156202", "83413494", "19030307"],
+        libra: ["152851849", "94647445", "146210232", "167296642", "81230624"],
+        sagittarius: ["100944", "40347832", "28321910", "78729922", "67900687"],
+        virgo: ["58771928", "106285530", "147102980", "45608887", "201158633"],
+        capricorn: ["193629024", "30205003", "39479736", "220132156", "19827973"],
+        cancer: ["150982856", "29497357", "182088735", "63796042", "2124726"],
+        aquarius: ["41517375", "7215045", "39250905", "116559912", "225058219"],
+        scorpio: ["7924237", "212319446", "37010978", "196659352", "165367496"],
+        gemini: ["117402", "39048906", "96149579", "27090065", "98679591"]
 
     }
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
         renderZodiac(searchWord)
     });
 
-// Functions
+    // Functions
 
     // Giphy Call Function
     function renderZodiac(searchWord) {
@@ -112,13 +112,13 @@ $(document).ready(function () {
             var splitText = response.text.split(".");
             console.log(splitText);
             var randomPhrase = response.text;
-            imgFlipAPI(splitText[0],splitText[1],zodsign);
+            imgFlipAPI(splitText[0], splitText[1], zodsign);
             $("#card-two").empty();
         });
     });
 
     // imgFlipAPI: Calls Meme creation functionality
-    function imgFlipAPI(text0,text1,zodsign){
+    function imgFlipAPI(text0, text1, zodsign) {
         console.log("zodsign", $(this).attr("id"));
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
         var randomTemplateID = imgFlipZodaicIDs[zodsign][Math.floor(Math.random() * imgFlipZodaicIDs[zodsign].length)];
@@ -126,31 +126,31 @@ $(document).ready(function () {
         $.ajax({
             url: queryURL,
             method: "POST",
-            data:"template_id="+ randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
+            data: "template_id=" + randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
         }).then(function (response) {
             console.log("Random Image", response);
-            var pic = $("<img>").attr("src",response.data.url).css({"width": "100%", "max-height": "100%"});
-            var memeDiv = $("<div>").attr("id", "memeDiv").css({"height": "inherit", "display": "flex", "justify-content": "center", "align-items": "center"}).append(pic);
+            var pic = $("<img>").attr("src", response.data.url).css({ "width": "100%", "max-height": "100%" });
+            var memeDiv = $("<div>").attr("id", "memeDiv").css({ "height": "inherit", "display": "flex", "justify-content": "center", "align-items": "center" }).append(pic);
             $("#card-two").empty();
             $("#card-two").append(memeDiv);
         })
     }
 
 
-    
+
 
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
         $("#card-one").empty();
         var sign = this.id;
-        
+
         // no images in database for scorpio so use it's planets instead
         if (sign == "scorpio") {
             scorpio = ["pluto", "mars"]
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
             console.log(sign);
         }
-        
+
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
         console.log(queryURL)
         $.ajax({
@@ -162,11 +162,11 @@ $(document).ready(function () {
                 console.log(true);
                 console.log(res);
                 var imageUrl = "nasa-alt-imag.jpg"
-                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%"});                
-                var wordDisplay = $("<h3>").text(searchTitle).css({"position": "absolute", "bottom": "3px", "padding": "0 5%"});
-                var blurbText ="Image courtesy of NASA Image and Video Library"
-                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({"display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit"}).appendTo(wordDisplay);
-                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit"}).append(nasaImage, wordDisplay);
+                var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" });
+                var wordDisplay = $("<h3>").text(searchTitle).css({ "position": "absolute", "bottom": "3px", "padding": "0 5%" });
+                var blurbText = "Image courtesy of NASA Image and Video Library"
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit" }).appendTo(wordDisplay);
+                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(nasaImage, wordDisplay);
                 $("#card-one").append(nasaDiv);
             }
             //error trapping- otherwise use first image they returned
@@ -179,89 +179,15 @@ $(document).ready(function () {
                 else {
                     var arrNum = [Math.floor(Math.random() * 100)];
                 }
-                var imageUrl = res.collection.items[arrNum].links[0].href;                
-                var searchTitle = res.collection.items[arrNum].data[0].title;                
-                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%"});
-                var wordDisplay = $("<h3>").text(searchTitle).css({"position": "absolute", "bottom": "3px", "padding": "0 5%"});
-                var blurbText ="Image courtesy of NASA Image and Video Library"
-                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({"display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit"}).appendTo(wordDisplay);
-                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit"}).append(nasaImage, wordDisplay);
-                $("#card-one").append(nasaDiv);                                  
+                var imageUrl = res.collection.items[arrNum].links[0].href;
+                var searchTitle = res.collection.items[arrNum].data[0].title;
+                var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" });
+                var wordDisplay = $("<h3>").text(searchTitle).css({ "position": "absolute", "bottom": "3px", "padding": "0 5%" });
+                var blurbText = "Image courtesy of NASA Image and Video Library"
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit" }).appendTo(wordDisplay);
+                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(nasaImage, wordDisplay);
+                $("#card-one").append(nasaDiv);
             };
         });
     });
-
-
-// Retired Code
-// DELETE BEFORE FINAL DEPLOYMENT
-
-    // don't think we are using this after all
-    // for now, this looks up a user entered word but will be updated to longest word from horiscope
-    // $("#dictionaryButton").on("click", function () {
-    //     var inputWord = $("#inputWord")
-    //         .val()
-    //         .trim();
-    //     console.log(inputWord);
-    //     var queryURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/" + inputWord + "?key=f7b3abf4-fb20-401a-9854-99b48ba1805f";
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var results = response[0];
-    //         console.log(response[0]);
-    //         var dictData = results.shortdef[0];
-    //         $("#dictionary").append(inputWord + " - ");
-    //         $("#dictionary").append("<p id='defintion'>" + dictData + "</p>");
-    //     });
-    // });
-
-        // $("#push").on("click", function () {
-    //     var queryURL = "https://poetrydb.org//lines/6:abs";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-
-    //         // console.log(response);
-    //         var poem = response[1].lines[3];
-    //         var secondline = response[1].lines[4];
-    //         // console.log(poem);
-    //         $("#lines").append(poem, secondline);
-    //     });
-    // });
-
-    //Random Quote API
-    // $("#quote").on("click", function () {
-    //     var queryURL = "http://get-me-a-quote.herokuapp.com/?accept=json";
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var randomQuote = response.text;
-    //         $("#random-quote").append(randomQuote);
-    //     });
-    // });
-
-    //Horoscope API
-    // $("#send").on("click", function () {
-    //     var sign = $("#horoscope").val();
-    //     console.log(sign);
-
-    //     var queryURL = "https://cors-anywhere.herokuapp.com/https://horoscope-api.herokuapp.com/horoscope/today/" + sign;
-    //     //              http://horoscope-api.herokuapp.com/horoscope/today/Libra
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         console.log(sign);
-
-    //         $("#zodiac").append(response.horoscope);
-    //     });
-    // });
-
 }); 
