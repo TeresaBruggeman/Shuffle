@@ -1,21 +1,5 @@
 $(document).ready(function() {
-  $("#buttons").one("click", function() {
-    $("#cards")
-      .css("visibility", "visible")
-      .hide()
-      .fadeIn("slow");
-  });
-
-  
-  $(".zodbutton").on("click", function() {
-    if ($(".flip-card").attr("data-state") == "back") {
-      $(".flip-card").attr("data-state", "front");
-      var inner = $(".flip-card").children(".flip-card-inner");
-      inner.css("transform", "rotateY(0deg)");
-    }
-  });
-
-  // Global Vars
+// Global Vars
 
   // imgflip meme ID Object
   var imgFlipZodaicIDs = {
@@ -84,58 +68,29 @@ $(document).ready(function() {
       var gemini = ["gemini", "Twins", "quick - witted", "clever", "intellectual", "expressive", "communicative"];
       var searchWord = gemini[Math.floor(Math.random() * gemini.length)];
     }
-    // console.log(searchWord)
     renderZodiac(searchWord);
   });
 
-  // Functions
+  // Display Functions
 
-  // Giphy Call Function
-  function renderZodiac(searchWord) {
-    $("#card-three").empty();
-    // var zodiacSign = this.id;
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
-    // console.log(zodiacSign)
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      // console.log(response);
-      var gipfyArray = [];
-      for (var i = 0; i < response.data.length; i++) {
-        gipfyArray.push(response.data[i]);
-      }
-      // console.log(gipfyArray)
-      var randomGiphy = gipfyArray[Math.floor(Math.random() * gipfyArray.length)];
-      var wordDisplay = $("<h1>").text(searchWord);
-      var randomImage = $("<img>")
-        .attr("src", randomGiphy.images.fixed_width_downsampled.url)
-        .css({ width: "100%", "max-height": "100%" });
-      // console.log(randomImage);
-      $("#card-three").append(wordDisplay, randomImage);
-    });
-  }
-
-  // Random Phrase API integration with imgFlipAPI
-  $(".zodbutton").on("click", function() {
-    var queryURL = "https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
-    var zodsign = $(this).attr("id");
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      // console.log("random Quote", response);
-      var splitText = response.text.split(".");
-      // console.log(splitText);
-      var randomPhrase = response.text;
-      imgFlipAPI(splitText[0], splitText[1], zodsign);
-      $("#card-two").empty();
-    });
+  // Initial Card Display
+  $("#buttons").one("click", function() {
+    $("#cards")
+      .css("visibility", "visible")
+      .hide()
+      .fadeIn("slow");
   });
 
-  // cards flip on click event
+  // Card Reset
+  $(".zodbutton").on("click", function() {
+    if ($(".flip-card").attr("data-state") == "back") {
+      $(".flip-card").attr("data-state", "front");
+      var inner = $(".flip-card").children(".flip-card-inner");
+      inner.css("transform", "rotateY(0deg)");
+    }
+  });
 
+  // Cards flip on click event
   $(".flip-card").on("click", function() {
     if ($(this).attr("data-state") == "front") {
       $(this).attr("data-state", "back");
@@ -148,18 +103,53 @@ $(document).ready(function() {
     }
   });
 
+  // Functions
+
+  // Giphy Call Function
+  function renderZodiac(searchWord) {
+    $("#card-three").empty();
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=VhztSlgEu1vKg29RVAQkT7bPmDTUMUEg";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var gipfyArray = [];
+      for (var i = 0; i < response.data.length; i++) {
+        gipfyArray.push(response.data[i]);
+      }
+      var randomGiphy = gipfyArray[Math.floor(Math.random() * gipfyArray.length)];
+      var wordDisplay = $("<h1>").text(searchWord);
+      var randomImage = $("<img>")
+        .attr("src", randomGiphy.images.fixed_width_downsampled.url)
+        .css({ width: "100%", "max-height": "100%" });
+      $("#card-three").append(wordDisplay, randomImage);
+    });
+  }
+
+  // Random Phrase API integration with imgFlipAPI
+  $(".zodbutton").on("click", function() {
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://typeracingapi.rishikc.com/.netlify/functions/server/text/";
+    var zodsign = $(this).attr("id");
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      $("#card-two").empty();
+      var splitText = response.text.split(".");
+      imgFlipAPI(splitText[0], splitText[1], zodsign);
+    });
+  });
+
   // imgFlipAPI: Calls Meme creation functionality
   function imgFlipAPI(text0, text1, zodsign) {
-    // console.log("zodsign", $(this).attr("id"));
     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image";
     var randomTemplateID = imgFlipZodaicIDs[zodsign][Math.floor(Math.random() * imgFlipZodaicIDs[zodsign].length)];
-    // console.log("Random Template", randomTemplateID);
     $.ajax({
       url: queryURL,
       method: "POST",
       data: "template_id=" + randomTemplateID + "&username=camprandowsboot&password=D6q*Ae-dqntnfkt&text0=" + text0 + "&text1=" + text1
     }).then(function(response) {
-      // console.log("Random Image", response);
+      $("#card-two").empty();
       var pic = $("<img>")
         .attr("src", response.data.url)
         .css({ width: "100%", "max-height": "100%" });
@@ -167,7 +157,6 @@ $(document).ready(function() {
         .attr("id", "memeDiv")
         .css({ height: "inherit", display: "flex", "justify-content": "center", "align-items": "center" })
         .append(pic);
-      $("#card-two").empty();
       $("#card-two").append(memeDiv);
     });
   }
@@ -190,8 +179,6 @@ $(document).ready(function() {
     }).then(function(res) {
       //error trapping- if no items are returned, use saved image
       if (res.collection.items.length === 0) {
-        // console.log(true);
-        // console.log(res);
         var imageUrl = "nasa-alt-imag.jpg";
         var wordDisplay = $("<h1>")
           .text("A Beautiful Nebula")
@@ -215,8 +202,6 @@ $(document).ready(function() {
       }
       //error trapping- otherwise use first image they returned
       else {
-        // console.log(false);
-        // console.log(res);
         if (res.collection.metadata.total_hits < 100) {
           var arrNum = [Math.floor(Math.random() * res.collection.metadata.total_hits)];
         } else {
