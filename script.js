@@ -148,11 +148,9 @@ $(document).ready(function () {
         if (sign == "scorpio") {
             scorpio = ["pluto", "mars"]
             var sign = scorpio[Math.floor(Math.random() * scorpio.length)]
-            // console.log(sign);
         }
 
         var queryURL = "https://images-api.nasa.gov/search?&description=" + sign + "&media_type=image"
-        // console.log(queryURL)
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -162,10 +160,10 @@ $(document).ready(function () {
                 // console.log(true);
                 // console.log(res);
                 var imageUrl = "nasa-alt-imag.jpg"
-                var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" });
-                var wordDisplay = $("<h3>").text(searchTitle).css({ "position": "absolute", "bottom": "3px", "padding": "0 5%" });
+                var wordDisplay = $("<h1>").text("A Beautiful Nebula").css({ "position": "absolute", "bottom": "3px" });
+                var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" }).attr("alt", "Nasa Image");
                 var blurbText = "Image courtesy of NASA Image and Video Library"
-                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit" }).appendTo(wordDisplay);
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "25%", "font-style": "italic"}).appendTo(wordDisplay);
                 var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(nasaImage, wordDisplay);
                 $("#card-one").append(nasaDiv);
             }
@@ -181,13 +179,24 @@ $(document).ready(function () {
                 }
                 var imageUrl = res.collection.items[arrNum].links[0].href;
                 var searchTitle = res.collection.items[arrNum].data[0].title;
-                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%" });
                 var wordDisplay = $("<h1>").text(searchTitle).css({ "position": "absolute", "bottom": "3px" });
+                // var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%" }).attr("alt", "Nasa Image");
+                // var blurbText = "Image courtesy of NASA Image and Video Library"
+                // var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "25%", "font-style": "italic"}).appendTo(wordDisplay);
+                // var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(wordDisplay, nasaImage);
+                // $("#card-one").append(nasaDiv);
+            };
+            renderNASA(imageUrl, wordDisplay);
+        });
+
+        //call the function that renders the NASA image, caption, and NASA call-back link
+        function renderNASA(imageUrl, wordDisplay) {
+                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%" }).attr("alt", "Nasa Image");
                 var blurbText = "Image courtesy of NASA Image and Video Library"
                 var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "25%", "font-style": "italic"}).appendTo(wordDisplay);
                 var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(wordDisplay, nasaImage);
                 $("#card-one").append(nasaDiv);
-            };
-        });
+        }
     });
+
 }); 
