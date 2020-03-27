@@ -172,7 +172,7 @@ $(document).ready(function() {
     });
   }
 
-  //this calls to the nasa picture of the day server, returns an image or video and displays it
+  //this calls to the nasa picture of the day server, returns an image and displays it
   $(".zodbutton").on("click", function(event) {
     $("#card-one").empty();
     var sign = this.id;
@@ -227,11 +227,6 @@ $(document).ready(function() {
         var wordDisplay = $("<h1>")
           .text(searchTitle)
           .css({ position: "absolute", bottom: "3px" });
-        // var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%" }).attr("alt", "Nasa Image");
-        // var blurbText = "Image courtesy of NASA Image and Video Library"
-        // var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "25%", "font-style": "italic"}).appendTo(wordDisplay);
-        // var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(wordDisplay, nasaImage);
-        // $("#card-one").append(nasaDiv);
       }
       renderNASA(imageUrl, wordDisplay);
     });
