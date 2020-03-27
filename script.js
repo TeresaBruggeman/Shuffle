@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     // imgflip meme ID Object
     var imgFlipZodaicIDs = {
+
         taurus: ["172511443", "137057825", "28000573", "179631944", "41083216"],
         aries: ["8349350", "19602839", "215994578", "75214965", "120854739"],
         leo: ["5496396", "86037", "4685281", "11705221", "17642278"],
@@ -15,6 +16,7 @@ $(document).ready(function () {
         aquarius: ["41517375", "7215045", "39250905", "116559912", "225058219"],
         scorpio: ["7924237", "212319446", "37010978", "196659352", "165367496"],
         gemini: ["117402", "39048906", "96149579", "27090065", "98679591"]
+
 
     }
 
@@ -117,6 +119,24 @@ $(document).ready(function () {
         });
     });
 
+
+
+    // cards flip on click event
+
+    $(".flip-card").on("click", function () {
+
+        if ($(this).attr("data-state") == "front") {
+            $(this).attr("data-state", "back")
+            var inner = $(this).children(".flip-card-inner")
+            inner.css("transform", "rotateY(180deg)")
+        } else {
+            $(this).attr("data-state", "front")
+            var inner = $(this).children(".flip-card-inner")
+            inner.css("transform", "rotateY(0deg)")
+        }
+    })
+
+   
     // imgFlipAPI: Calls Meme creation functionality
     function imgFlipAPI(text0, text1, zodsign) {
         // console.log("zodsign", $(this).attr("id"));
@@ -135,6 +155,7 @@ $(document).ready(function () {
             $("#card-two").append(memeDiv);
         })
     }
+
 
 
 
