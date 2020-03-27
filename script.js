@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // imgflip.com meme IDs for meme card
     var imgFlipZodaicIDs = {
-        taurus:["172511443","137057825"]
+        taurus: ["172511443", "137057825"]
     }
 
     // $("#push").on("click", function () {
@@ -115,6 +115,22 @@ $(document).ready(function () {
         });
     });
 
+
+    // cards flip on click event
+
+    $(".flip-card").on("click", function () {
+
+        if ($(this).attr("data-state") == "front") {
+            $(this).attr("data-state", "back")
+            var inner = $(this).children(".flip-card-inner")
+            inner.css("transform", "rotateY(180deg)")
+        } else {
+            $(this).attr("data-state", "front")
+            var inner = $(this).children(".flip-card-inner")
+            inner.css("transform", "rotateY(0deg)")
+        }
+    })
+
     // $(".zodbutton").on("click", function () {
     //     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image"
     //     $.ajax({
@@ -190,7 +206,7 @@ $(document).ready(function () {
                 nasaImage.attr("src", imageUrl);
                 nasaImage.css("width", "100%");
                 nasaImage.addClass("nasa");
-                $("#card-one").append(nasaImage);  
+                $("#card-one").append(nasaImage);
             }
             //error trapping- otherwise use first image they returned
             else {
