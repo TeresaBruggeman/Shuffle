@@ -156,10 +156,6 @@ $(document).ready(function () {
         })
     }
 
-
-
-
-
     //this calls to the nasa picture of the day server, returns an image or video and displays it
     $(".zodbutton").on("click", function (event) {
         $("#card-one").empty();
