@@ -92,11 +92,22 @@ img {
   transform: rotateY(180deg);
   text-align: center;
 }
+
+#card-one a {
+  color: white;
+  padding-top: 5px;
+}
+
+#card-one h1 {
+  width: 100%;
+  font-size: 2em;
+  padding: 5px 10px;
+}
+
 #card-one {
   overflow: hidden;
-  padding-top: 25%;
-  padding-bottom: 25%;
 }
+
 .zodbutton {
   text-align: center;
 }

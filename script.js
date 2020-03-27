@@ -181,11 +181,11 @@ $(document).ready(function () {
                 }
                 var imageUrl = res.collection.items[arrNum].links[0].href;
                 var searchTitle = res.collection.items[arrNum].data[0].title;
-                var nasaImage = $("<img>").attr("src", imageUrl).css({ "width": "100%", "max-height": "100%" });
-                var wordDisplay = $("<h3>").text(searchTitle).css({ "position": "absolute", "bottom": "3px", "padding": "0 5%" });
+                var nasaImage = $("<img>").attr("src", imageUrl).css({"width": "100%", "max-height": "100%" });
+                var wordDisplay = $("<h1>").text(searchTitle).css({ "position": "absolute", "bottom": "3px" });
                 var blurbText = "Image courtesy of NASA Image and Video Library"
-                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "50%", "font-style": "italic", "color": "inherit" }).appendTo(wordDisplay);
-                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(nasaImage, wordDisplay);
+                var nasaBlurb = $("<a>").text(blurbText).attr("target", "_blank").attr("href", "https://images.nasa.gov/").css({ "display": "block", "font-size": "25%", "font-style": "italic"}).appendTo(wordDisplay);
+                var nasaDiv = $("<div>").attr("id", "nasaDiv").css({ "height": "inherit" }).append(wordDisplay, nasaImage);
                 $("#card-one").append(nasaDiv);
             };
         });
