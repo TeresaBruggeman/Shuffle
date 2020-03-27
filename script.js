@@ -71,7 +71,7 @@ $(document).ready(function() {
     renderZodiac(searchWord);
   });
 
-  // Display Functions
+// Display Functions
 
   // Initial Card Display
   $("#buttons").one("click", function() {
@@ -103,7 +103,7 @@ $(document).ready(function() {
     }
   });
 
-  // Functions
+// Functions
 
   // Giphy Call Function
   function renderZodiac(searchWord) {
@@ -161,7 +161,7 @@ $(document).ready(function() {
     });
   }
 
-  //this calls to the nasa picture of the day server, returns an image and displays it
+  // NASA API: this calls to the nasa picture of the day server, returns an image and displays it
   $(".zodbutton").on("click", function(event) {
     $("#card-one").empty();
     var sign = this.id;
