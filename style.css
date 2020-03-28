@@ -85,13 +85,7 @@ img {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  /* padding: 5% 0;  */
 }
-
-/* .flip-card:hover .flip-card-inner {
-transform: rotateY(180deg);
-
-} */
 
 .flip-card-front, .flip-card-back {
   position: absolute;
