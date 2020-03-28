@@ -5,8 +5,16 @@ $(document).ready(function() {
       .hide()
       .fadeIn("slow");
   });
-
   
+  // Modal
+  var modal = document.getElementById("myModal");
+  $(modal).modal("show");
+  var span = document.getElementsByClassName("close")[0];
+  $(span).on("click", function() {
+    modal.style.display = "none";
+  });
+
+  // Card Flip
   $(".zodbutton").on("click", function() {
     if ($(".flip-card").attr("data-state") == "back") {
       $(".flip-card").attr("data-state", "front");
