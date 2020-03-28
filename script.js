@@ -1,29 +1,4 @@
 $(document).ready(function() {
-
-  $("#buttons").one("click", function() {
-    $("#cards")
-      .css("visibility", "visible")
-      .hide()
-      .fadeIn("slow");
-  });
-  
-  // Modal
-  var modal = document.getElementById("myModal");
-  $(modal).modal("show");
-  var span = document.getElementsByClassName("close")[0];
-  $(span).on("click", function() {
-    modal.style.display = "none";
-  });
-
-  // Card Flip
-  $(".zodbutton").on("click", function() {
-    if ($(".flip-card").attr("data-state") == "back") {
-      $(".flip-card").attr("data-state", "front");
-      var inner = $(".flip-card").children(".flip-card-inner");
-      inner.css("transform", "rotateY(0deg)");
-    }
-  });
-
 // Global Vars
 
   // imgflip meme ID Object
