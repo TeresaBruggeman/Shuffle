@@ -52,8 +52,9 @@ img {
     margin-bottom: 30px;
 }
 #cards {
-    margin-top: 40px;
-    margin-bottom: 40px;
+  visibility: hidden;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .col {
   text-align: center;
@@ -73,10 +74,6 @@ img {
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-/* .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-  
-} */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -100,7 +97,6 @@ img {
 
 #card-one h1 {
   width: 100%;
-  font-size: 2em;
   padding: 5px 10px;
 }
 
