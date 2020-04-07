@@ -1,6 +1,8 @@
 # Shuffle
  
-“Shuffle” is an interactive, aggregate web application that allows users to enter their astrological sign and be presented with a “visual horoscope” based on the interaction of content between three cards. When the user selects their sign by clicking a button along the top, the cards are “shuffled” and dealt onto a linen cloth background. As the user clicks on the cards, they flip over and display images and text based on the selected astrological sign. The idea is that the random and unique results work together to create a visual horoscope that the user can read into in their own way, making meaning from the disparate elements. In a way, it is a collaboration between the user and the application. In addition to its functionality, it possesses a minimal and clean design for smooth user experience, and a pleasing aesthetic and color story that are trending and relevant at this time among millenials and young artists/designers.
+“Shuffle” is an interactive, aggregate web application that allows users to enter their astrological sign and be presented with a “visual horoscope” based on the interaction of content between three cards. When the user selects their sign by clicking a button along the top, the cards are “shuffled” and dealt onto a linen cloth background. As the user clicks on the cards, they flip over and display images and text based on the selected astrological sign. The idea is that the random and unique results work together to create a visual horoscope that the user can read interpret in many ways, creating meaning from the disparate elements. Shuffle possesses a minimal, clean design for a smooth user experience and a modern color scheme.
+
+Find Shuffle at https://teresabruggeman.github.io/Shuffle/
  
 ## Concept
  
