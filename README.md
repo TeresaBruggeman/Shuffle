@@ -39,7 +39,6 @@ Even though this is a simple idea, nothing quite like it exists. The internet ha
     - GitHub
         - Pull Requests
     - Spotify
-        - NO WII MIIUSIC!!!!
  
 ### Challenges
 - Video Collaborating
